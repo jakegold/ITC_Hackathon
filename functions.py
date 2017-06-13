@@ -30,4 +30,9 @@ def power_set(elements):
 	result = []
 	for i in range(1 << x):
 		result.insert(0, [elements[j] for j in range(x) if (i & (1 << j))])
+	result.sort(key=len)
+	result.reverse()
+	result.pop()
+	for elt in result:
+		elt.sort()
 	return result
