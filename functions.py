@@ -20,4 +20,4 @@ def get_foods():
 
 def get_all_files(filepath):
 	all_files = [f for f in listdir(filepath) if isfile(join(filepath, f))]
-	return(all_files)
+	return all_files
