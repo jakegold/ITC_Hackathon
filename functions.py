@@ -33,6 +33,7 @@ def power_set(elements):
 	result.sort(key=len)
 	result.reverse()
 	result.pop()
-	for elt in result:
-		elt.sort()
+	for element in result:
+		if (len(element) > 5):
+			result.remove(element)
 	return result
