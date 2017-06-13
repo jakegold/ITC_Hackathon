@@ -6,18 +6,12 @@ def powerset(lst):
 	output = []
 	for i in range(1 << x):
 		output.insert(0, [lst[j] for j in range(x) if (i & (1 << j))])
+	output.sort(key=len)
+	output.reverse()
+	output.pop()
+	for elt in output:
+		elt.sort()
 	return output
-
-#just an example input - delete this when we get to the real thing
-ingredients = ['lettuce', 'tomato', 'carrot']
-a =  powerset(ingredients)
-
-#where a is the output of powerset, the following code gets the list of lists into the order we want
-a.sort(key=len)
-a.reverse()
-a.pop()
-for elt in a:
-	elt.sort()
 
 
 #start of SQL code
