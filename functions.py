@@ -36,3 +36,13 @@ def power_set(elements):
 	for elt in result:
 		elt.sort()
 	return result
+
+def queryfunc(lst):
+	conn = sqlite3.connect('database.db')
+	c = conn.cursor()
+	result = []
+	for elt in lst:
+		strng = "%".join(elt)
+		c.execute("SELECT URL FROM recipes WHERE Ingredients LIKE %?%",strng)
+		result.append(c.fetchall())
+	return result
