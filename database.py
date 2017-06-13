@@ -7,7 +7,7 @@ import sqlite3
 # 		strng = ", ".join(element)
 # 		c.execute("SELECT URL FROM recipes WHERE Ingredients=?",strng)
 # 		print c.fetchall()
-
+# Returns a list of urls for the recipes
 def queryfunc(lst):
 	conn = sqlite3.connect('database.db')
 	c = conn.cursor()
