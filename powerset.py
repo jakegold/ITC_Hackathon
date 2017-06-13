@@ -28,4 +28,4 @@ def queryfunc(lst):
 	for elt in lst:
 		strng = ", ".join(elt)
 		c.execute("SELECT URL FROM recipes WHERE Ingredients=?",strng)
-		print c.fetchone()
+		print c.fetchall()
