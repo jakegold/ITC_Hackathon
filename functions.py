@@ -38,6 +38,7 @@ def power_set(elements):
 		elt.sort()
 	return result
 
+# Returns a list of urls for the recipes
 def queryfunc(lst):
 	conn = sqlite3.connect('database.db')
 	c = conn.cursor()
