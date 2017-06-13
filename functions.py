@@ -8,8 +8,7 @@ app = ClarifaiApp()
 
 # Returns a set of all the ingredients in the fridge
 def get_foods():
-# 	NOT SURE WHAT THE DATA PATH IS!!
-	filepath = '/fridge_pics'
+	filepath = 'fridge_pics'
 	files = get_all_files(filepath)
 	foodList = []
 	for pic in files:
