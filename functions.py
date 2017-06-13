@@ -21,3 +21,18 @@ def get_foods():
 def get_all_files(filepath):
 	all_files = [f for f in listdir(filepath) if isfile(join(filepath, f))]
 	return all_files
+
+# Creates a powerset (a list of all possible subsets) from a list
+def power_set(elements):
+	x = len(elements)
+	result = []
+	for i in range(1 << x):
+		result.insert(0, [elements[j] for j in range(x) if (i & (1 << j))])
+# 		if statment goes here
+# 		something like: if(results[-1].size() > 5) break
+	result.sort(key=len)
+	result.reverse()
+	result.pop()
+	for elt in result:
+		elt.sort()
+	return result
