@@ -7,7 +7,7 @@ from os.path import isfile, join
 app = ClarifaiApp()
 
 def get_foods():
-	filepath = '/Users/Jake/desktop/fridge_pics'
+	filepath = '/fridge_pics'
 	files = get_all_files(filepath)
 	foodList = []
 	for pic in files:
