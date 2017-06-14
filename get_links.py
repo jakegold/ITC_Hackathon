@@ -19,3 +19,8 @@ class GetLinks():
                 if substring in next and len(self.links) < 3:
                     next = 'http://allrecipes.com/' + next
                     self.links.add(next)
+    def get_ingredients(self):
+        for link in self.soup.find_all('span', {'class':'recipe-ingred_txt added'}):
+            next = link.get_text()
+            self.ingredients.append(next)
+        return self.ingredients
