@@ -1,26 +1,21 @@
-from html.parser import HTMLParser
-from urllib import parse
+from bs4 import BeautifulSoup
 
-class GetLinks(HTMLParser):
+class GetLinks():
 
-    def __init__(self, url):
+    def __init__(self, html):
         super().__init__()
-        self.url = url
+        self.soup = BeautifulSoup(html, 'html.parser')
         self.links = set()
 
-    def handle_starttag(self, tag, attrs):
-        if tag == 'a':
-            for (attribute, value) in attrs:
-                if attribute == 'href':
-                    substr = '/recipe/'
-                    if substr in value:
-                        url = parse.urljoin(self.home_url, value)
-                        if len(links) < 4:
-                            self.links.add(url)
-                        break
-
-    def page_links(self):
+    def get_links(self):
+        self.page_links()
         return self.links
 
-    def error(self, message):
-        passge
+    def page_links(self):
+        substring = '/recipe/'
+        for link in self.soup.find_all('a'):
+            next = link.get('href')
+            if next != None:
+                if substring in next and len(self.links) < 3:
+                    next = 'http://allrecipes.com/' + next
+                    self.links.add(next)
