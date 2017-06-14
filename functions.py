@@ -4,6 +4,8 @@ from clarifai.rest import Image as ClImage
 from os import listdir
 from os.path import isfile, join
 import webbrowser
+from bs4 import BeautifulSoup
+from urllib import urlopen
 
 app = ClarifaiApp()
 
@@ -60,3 +62,11 @@ def build_soup(url):
 def get_urls(url):
 	findLinks = build_soup(url)
 	return findLinks.get_links()
+
+#Returns the title of a URL
+def extract_html_title(url):
+    html = ''
+    response = urlopen(url)
+    html = response.read()
+    soup = BeautifulSoup(html, 'html.parser')
+    return soup.title.text
