@@ -4,7 +4,10 @@ from clarifai.rest import Image as ClImage
 from os import listdir
 from os.path import isfile, join
 import webbrowser
-from urllib import urlopen
+from urllib.request import urlopen
+import smtplib
+from get_links import GetLinks
+from bs4 import BeautifulSoup
 
 app = ClarifaiApp()
 
@@ -62,10 +65,18 @@ def get_urls(url):
 	findLinks = build_soup(url)
 	return findLinks.get_links()
 
-# Returns the title of a URL
-def extract_html_title(url):
+# Gets a list of ingredients that are needed for a recipe
+def get_ingreds(url):
 	findLinks = build_soup(url)
-	return findLinks.title.text
+	return findLinks.get_ingredients()
+
+#Returns the title of a URL
+def extract_html_title(url):
+	html = ''
+	response = urlopen(url)
+	html = response.read()
+	soup = BeautifulSoup(html, 'html.parser')
+	return soup.title.text
 
 # Returns shopping list
 def what_2_buy(fridgefoods, ingredients):
@@ -78,3 +89,15 @@ def what_2_buy(fridgefoods, ingredients):
 				break
 		continue
 	return shoppingList
+
+# Sends the email
+def send_email(to_address, msg):
+    subject = "Recommended Recipes"
+    message = 'Subject: {}\n\n{}'.format(subject, msg)
+    mail = smtplib.SMTP('smtp.gmail.com', 587)
+    mail.ehlo()
+    mail.starttls()
+    sender = 'itcsmartfridge@gmail.com'
+    mail.login(sender, 'iamafridge')
+    mail.sendmail(sender, to_address, message)
+    mail.close()
