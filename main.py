@@ -1,4 +1,4 @@
-from testing import *
+from functions import *
 
 def run():
 	foodList = get_foods()
