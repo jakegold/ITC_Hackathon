@@ -41,11 +41,14 @@ def power_set(elements):
 			result.remove(element)
 	return result
 
+# Returns the url of the searched food list
 def browser(lst):
 	string = "%20".join(lst)
 	url = 'http://allrecipes.com/search/results/?wt='+string+'&sort=re'
-	webbrowser.open(url)	
+# 	webbrowser.open(url)
+	return url
 
+# Returns a list of the top recipes from the list of foods
 def get_urls(url):
 	html = ''
 	try:
