@@ -2,6 +2,7 @@ from functions import *
 
 def run():
 	foodList = get_foods()
-	browser(foodList)
+	url = browser(foodList)
+	print(get_urls(url))
 
 run()
