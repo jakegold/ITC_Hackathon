@@ -62,7 +62,19 @@ def get_urls(url):
 	findLinks = build_soup(url)
 	return findLinks.get_links()
 
-#Returns the title of a URL
+# Returns the title of a URL
 def extract_html_title(url):
 	findLinks = build_soup(url)
 	return findLinks.title.text
+
+# Returns shopping list
+def what_2_buy(fridgefoods, ingredients):
+	shoppingList = ingredients[:]
+	for ing in ingredients:
+		for item in fridgefoods:
+			if item in ing:
+				shoppingList.remove(ing)
+				fridgefoods.remove(item)
+				break
+		continue
+	return shoppingList
