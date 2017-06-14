@@ -3,10 +3,9 @@ from urllib import parse
 
 class GetLinks(HTMLParser):
 
-    def __init__(self, home_url, page_url):
+    def __init__(self, url):
         super().__init__()
-        self.home_url = home_url
-        self.page_url = page_url
+        self.url = url
         self.links = set()
 
     def handle_starttag(self, tag, attrs):
