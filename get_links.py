@@ -21,7 +21,10 @@ class GetLinks():
                     self.links.add(next)
                     
     def get_ingredients(self):
+        self.page_ingredients()
+        return self.ingredients
+        
+    def page_ingredients(self):
         for link in self.soup.find_all('span', {'class':'recipe-ingred_txt added'}):
             next = link.get_text()
             self.ingredients.append(next)
-        return self.ingredients
