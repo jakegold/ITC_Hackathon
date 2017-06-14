@@ -93,6 +93,9 @@ def what_2_buy(fridgefoods, ingredients):
 # Sends the email
 def send_email(to_address, msg):
     subject = "Recommended Recipes"
+    register = '\N{REGISTERED SIGN}'
+    if register in msg:
+    	msg = msg.replace('\N{REGISTERED SIGN}', '')
     message = 'Subject: {}\n\n{}'.format(subject, msg)
     mail = smtplib.SMTP('smtp.gmail.com', 587)
     mail.ehlo()
