@@ -45,3 +45,14 @@ def browser(lst):
 	string = "%20".join(lst)
 	url = 'http://allrecipes.com/search/results/?wt='+string+'&sort=re'
 	webbrowser.open(url)	
+
+def get_urls(url):
+	html = ''
+	try:
+		response = urlopen(url)
+		html = response.read()
+		findLinks = GetLinks(html)
+	except Exception:
+		print ("Can't crawl that page")
+		return list()
+	return findLinks.get_links()
