@@ -3,6 +3,7 @@ from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
 from os import listdir
 from os.path import isfile, join
+import webbrowser
 
 app = ClarifaiApp()
 
@@ -39,3 +40,8 @@ def power_set(elements):
 		if (len(element) > 5):
 			result.remove(element)
 	return result
+
+def browser(lst):
+	string = "%20".join(lst)
+	url = 'http://allrecipes.com/search/results/?wt='+string+'&sort=re'
+	webbrowser.open(url)	
