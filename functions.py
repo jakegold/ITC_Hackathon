@@ -48,14 +48,15 @@ def browser(lst):
 # 	webbrowser.open(url)
 	return url
 
+# Builds a soup object and returns it
+def build_soup(url):
+	html = ''
+	response = urlopen(url)
+	html = response.read()
+	findLinks = GetLinks(html)
+	return findLinks
+
 # Returns a list of the top recipes from the list of foods
 def get_urls(url):
-	html = ''
-	try:
-		response = urlopen(url)
-		html = response.read()
-		findLinks = GetLinks(html)
-	except Exception:
-		print ("Can't crawl that page")
-		return list()
+	findLinks = build_soup(url)
 	return findLinks.get_links()
