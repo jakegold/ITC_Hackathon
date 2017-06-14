@@ -85,7 +85,6 @@ def what_2_buy(fridgefoods, ingredients):
 		for item in fridgefoods:
 			if item in ing:
 				shoppingList.remove(ing)
-				fridgefoods.remove(item)
 				break
 		continue
 	return shoppingList
