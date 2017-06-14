@@ -10,6 +10,8 @@ def get_foods():
 	files = get_all_files(filepath)
 	foodList = []
 	for pic in files:
+		if pic[0] == '.':
+			continue
 		newFilepath = filepath + '/' + pic
 		image = [newFilepath]
 		img = app.tag_files(image, model='food-items-v1.0')
