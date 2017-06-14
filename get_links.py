@@ -16,11 +16,12 @@ class GetLinks(HTMLParser):
                     substr = '/recipe/'
                     if substr in value:
                         url = parse.urljoin(self.home_url, value)
-                        self.links.add(url)
+                        if len(links) < 4:
+                            self.links.add(url)
                         break
 
     def page_links(self):
         return self.links
 
     def error(self, message):
-        pass
+        passge
