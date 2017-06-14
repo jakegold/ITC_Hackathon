@@ -65,4 +65,4 @@ def get_urls(url):
 #Returns the title of a URL
 def extract_html_title(url):
 	findLinks = build_soup(url)
-	return soup.title.text
+	return findLinks.title.text
