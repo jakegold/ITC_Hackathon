@@ -1,6 +1,8 @@
 from clarifai import rest
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
+from os import listdir
+from os.path import isfile, join
 
 app = ClarifaiApp()
 
